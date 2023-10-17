@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function PokemonCard(props) {
-  const { pokemon } = props;
+  const { pokemon, pokemonIndex } = props;
 
   if (!pokemon || !pokemon.name) {
     return (
@@ -23,6 +23,7 @@ function PokemonCard(props) {
         {imgSrc ? <img src={imgSrc} alt={name} /> : <img src="???" alt="???" />}
       </figure>
       <figcaption>{name}</figcaption>
+      <p>Pokemon Index: {pokemonIndex}</p>
     </div>
   );
 }
@@ -32,6 +33,7 @@ PokemonCard.propTypes = {
     name: PropTypes.string,
     imgSrc: PropTypes.string,
   }),
+  pokemonIndex: PropTypes.number.isRequired,
 };
 
 export default PokemonCard;
