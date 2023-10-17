@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PokemonCard from "./component/PokemonCard";
 import PropTypes from "prop-types";
+import NavBar from "./component/NavBar"; // Assurez-vous d'importer le composant NavBar
 
 const pokemonList = [
   {
@@ -46,14 +47,12 @@ function App() {
   return (
     <div>
       <PokemonCard pokemon={pokemonList[pokemonIndex]} />
-      <div>
-        {pokemonIndex > 0 && (
-          <button onClick={goToPreviousPokemon}>Précédent</button>
-        )}
-        {pokemonIndex < pokemonList.length - 1 && (
-          <button onClick={goToNextPokemon}>Suivant</button>
-        )}
-      </div>
+      <NavBar
+        onPreviousClick={goToPreviousPokemon}
+        onNextClick={goToNextPokemon}
+        hasPrevious={pokemonIndex > 0}
+        hasNext={pokemonIndex < pokemonList.length - 1}
+      />
     </div>
   );
 }
